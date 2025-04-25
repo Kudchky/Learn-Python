@@ -6,39 +6,35 @@
 3. Carry out the plan
 4. Look back and improve your solution
 
-¡Adivina el número!
+¡Test de Quesos!
 
-Teniendo en cuenta lo visto en esta clase, diseña un programa en el cual el usuario tenga que adivinar 
-un número dentro de una secuencia de 1 a 10. Cuando se pregunte al usuario cuál es el número que está 
-dentro de la secuencia, en el caso de que acierte debéis darle la enhorabuena al usuario por adivinar el 
-número, si no acíerta el número se concluye el juego.
+Test sobre quesos: escribe el codigo del test que hemos trabajado en clase para crear tu propio programa
 
 ## 1. 📖 Entender el Enunciado
 
 - [ ] Identificar requisitos clave:
 
-    1. Genera número aleatorio entre 1 y 10.
-    2. Preguntar al usuario el numero.
-    3. Compara el número del usuario con el generado.
-    4. Dar mensaje de acierto.
-    5. Dar mensaje de error, revelar número y terminar el juego.
+    1. Crear un contador de puntos.
+    2. Preguntar al usuario su respuesta a la pregunta hecha(A, B o C).
+    3. Compara la respuesta del usuario y establecer puntuación a la pregunta.
+    4. Compara la puntuación alcanzada por el usuario para ver que tanto le gusta 
+    el queso.
 
 ## 2. 🧱 Diseñar la Estructura
 - [ ] Pseudocódigo mental:
-    - Entrada: Número ingresado por el usuario.
+    - Entrada: Respuesta del usuario a la pregunta (A, B y C).
     
-    - Salida:  Mensaje de acierto o error.
+    - Salida:  Mensaje indicando si no le gusta o le gusta mucho el queso al usuario.
 
     - Proceso:
-        1. Generar número aleatorio (1-10).
+        1. Generar mensaje de bienvenida al juego.
         2. Pedir input al usuario.
-        3. Comparar con el número aleatorio.
-        4. Si no acierta, revelar el número.
-        5. Sí acierta, dar mensaje de acierto. 
+        3. Comparar la entrada del usuario y asignar puntuación.
+        4. Comparar puntaje final para saber que tanto le gusta el queso al usuario.
 
 ## 3. 🧰 Elegir Herramientas
 - [ ] Lenguaje: Python
-- [ ] Modulos/Funciones: random.randint(), input(), print(), int(). 
+- [ ] Modulos/Funciones: input(), print(), funcionesCreadas(). 
 - [ ] Estructuras que usaré (if-else)
 
 ## 4. 🛠️ Implementar en Etapas
