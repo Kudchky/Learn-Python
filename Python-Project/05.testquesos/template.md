@@ -1,5 +1,5 @@
 
-# 🧠 # The Secret to Solving Any Problem
+# a🧠 # The Secret to Solving Any Problem
 
 1. Understand the problem
 2. Make a plan
@@ -8,7 +8,7 @@
 
 ¡Test de Quesos!
 
-Test sobre quesos: escribe el codigo del test que hemos trabajado en clase para crear tu propio programa
+Test sobre quesos: escribe el código del test que hemos trabajado en clase para crear tu propio programa
 
 ## 1. 📖 Entender el Enunciado
 
