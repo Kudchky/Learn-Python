@@ -36,9 +36,9 @@ user_choice(answer_user)
 
 
 answer_user = input("Question 2.- ¿How do you like hamburgers?\n"
-                    "A: With cheese\n"
-                    "B: Without cheese\n"
-                  "C: With bread and cheese\n")
+                    "A: Without cheese\n"
+                    "B: Little cheese\n"
+                    "C: With bread and cheese\n")
 
 user_choice(answer_user)
 
