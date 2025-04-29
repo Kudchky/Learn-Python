@@ -32,25 +32,39 @@ def display_currency_options(options_dict):
     return options_string
 # --- END ---
 
-# --- START --- Func Validations ---
-
-# --- END ---
-
 # --- START Function Menu ---
-def get_conversion_inputs():
+def get_conversion_inputs(options_dict):
     print("\n ------ Welcome to the Coin Converter App ------\n")
 
-    source_currency = input("¿What currency do you bring?\n"
-                            f"{display_currency_options(CURRENCY_OPTIONS)}\n"
-                            ">> "
-                            )
+    source_currency = ""
+    target_currency = ""
+    amount = None
 
-    amount = float(input("\nEnter amount to change: "))
+    while source_currency not in options_dict:
+        source_currency = input("¿What currency do you bring?\n"
+                                f"{display_currency_options(CURRENCY_OPTIONS)}\n"
+                                ">> "
+                                ).upper()
+        if source_currency not in options_dict:
+            print("¡Input not valid, please enter one of the listed codes!")
 
-    target_currency = input("\n¿Which currency you will change?\n"
-                            f"{display_currency_options(CURRENCY_OPTIONS)}\n"  
-                            ">> "
-                            )
+    while amount is None:
+        amount_usr = input(f"\nEnter amount to change in {source_currency}: ")
+        try:
+            amount = float(amount_usr)
+            if amount < 1:
+                print("The amount can't be negative. Try again")
+                amount = None
+        except ValueError:
+            print("Not valid! Please enter a valid number for quantity")
+
+    while target_currency not in options_dict:
+        target_currency = input("\n¿Which currency you will change?\n"
+                                f"{display_currency_options(CURRENCY_OPTIONS)}\n"  
+                                ">> "
+                                ).upper()
+        if target_currency not in options_dict:
+           print("¡Input not valid, please enter one of the listed codes!")
 
     return source_currency, amount, target_currency
 # --- END ---
@@ -61,4 +75,4 @@ def change_currency(exchange_rates_dict, source_curr, amount_val, target_curr):
 
     print(f"{amount_val} {source_curr} is {converted_amount: .2f} {target_curr}")
 
-change_currency(EXCHANGE_RATES, *get_conversion_inputs())
+change_currency(EXCHANGE_RATES, *get_conversion_inputs(CURRENCY_OPTIONS))
