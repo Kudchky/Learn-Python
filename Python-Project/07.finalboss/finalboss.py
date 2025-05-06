@@ -164,10 +164,12 @@ else:
         print("Adivina el numero del 1 al 10, tienes 3 intentos, no falles JAJAJA\n")
         count = 1
         num_random = random.randint(1, 10)
-        while count <= 3 or num_random == option:
+        while count <= 3:
             option = int(input("Que numero eliges caballero: \n>> "))
+
             if option == num_random:
                 print("Bien hecho, puedes continuar tu viaje... \n")
+                break
             elif count == 3:
                 print(f"Es tu ultimo intento caballero, {num_random} era el numero, tu fin llego..\n")
                 exit()
