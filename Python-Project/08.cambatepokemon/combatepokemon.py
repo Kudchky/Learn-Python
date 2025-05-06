@@ -15,33 +15,41 @@ ataques_pokemon = {
     }
 }
 
-vida_picachu = 80
-vida_squirtle = 90
+vida_inicial_picachu = 80
+vida_inicial_squirtle = 90
+
+vida_picachu = vida_inicial_picachu
+vida_squirtle = vida_inicial_squirtle
 
 turno = random.randint(0,1)
 
 def barra_vida(vida_pokemon, pokemon):
     if pokemon == "Picachu":
-        result = int(vida_pokemon * 10 / 80)
-        return ["#" * result + " " * (10 - result), result]
+        result = round(vida_pokemon * 10 / vida_inicial_picachu, 2)
+        cadena = f'{"▓" * int(result)}{"░" * (10 - int(result))}'
+        print(f"{pokemon}    [{cadena}] {result * 10}%")
     else:
-        result = int(vida_pokemon * 10 / 90)
-        return ["#" * result + " " * (10 - result), result]
+        result = round(vida_pokemon * 10 / vida_inicial_squirtle, 2)
+        cadena = f'{"▓" * int(result)}{"░" * (10 - int(result))}'
+        print(f"{pokemon}   [{cadena}] {result * 10}%\n")
 
 
 print("\nEmpiza la Batalla Pokemon entre PICACHU y SQUIRTLE\n"
       "===================================================\n")
+barra_vida(vida_picachu, "Picachu")
+barra_vida(vida_squirtle, "Squirtle")
+
 while vida_picachu > 0 and vida_squirtle > 0:
     if turno == 0:
         print("Es tu turno de atacar, Vamos PIKACHU...!\n")
         ataque = ataques_pokemon["Pikachu"][str(random.randint(1, 4))]
         print(f"¡Genial, Picachu ataca con {ataque['ataque']}, son {ataque['dano']} de dano\n")
         vida_squirtle -= ataque["dano"]
-        [cadena_picachu, result_picachu] = barra_vida(vida_picachu, "Picachu")
-        [cadena_squirtle, result_squirtle] = barra_vida(vida_squirtle, "Squirtle")
+        if vida_squirtle < 0:
+            vida_squirtle = 0
 
-        print(f"La vida de Picachu es: {vida_picachu} [{cadena_picachu}] {result_picachu * 10}%\n"
-              f"la vida de Squirtle es: {vida_squirtle} [{cadena_squirtle}] {result_squirtle * 10}%\n")
+        barra_vida(vida_picachu, "Picachu")
+        barra_vida(vida_squirtle, "Squirtle")
         turno = 1
     else:
         print("Es tu turno de atacar, Vamos SQUIRTLE... !\n")
@@ -56,8 +64,10 @@ while vida_picachu > 0 and vida_squirtle > 0:
         ataque = ataques_pokemon["Squirtle"][option]
         print(f"¡Genial, Squirtle ataca con {ataque['ataque']}, son {ataque['dano']} de dano\n")
         vida_picachu -= ataque["dano"]
-        print(f"la vida de Squirtle es: {vida_squirtle} [{barra_vida(vida_squirtle, 'Squirtle')}]\n"
-              f"La vida de Picachu es: {vida_picachu} [{barra_vida(vida_picachu, 'Picachu')}]")
+        if vida_picachu < 0:
+            vida_picachu = 0
+        barra_vida(vida_picachu, "Picachu")
+        barra_vida(vida_squirtle, "Squirtle")
         turno = 0
 
 if vida_squirtle > vida_picachu:
