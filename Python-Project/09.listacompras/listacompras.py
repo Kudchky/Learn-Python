@@ -4,14 +4,14 @@ option = ""
 print("\n============= Programa Lista de la Compra ================\n")
 
 while option != "Q":
-    option= input("¿Que desea comprar? ([Q] para salir) >> ")
+    option= input("¿Que desea comprar? ([Q] para salir) >> ").strip().capitalize()
     if  option.upper() == "Q":
-        continue
+        break
 
-    option_safe = input(f"¿Seguro que quiere agregar {option}? [S/N] >> ").upper()
+    option_safe = input(f"¿Seguro que quiere agregar {option}? [S/N] >> ").strip().upper()
     if option_safe == "S":
         if option in LISTA_COMPRA:
-            print(f"{option} ya esta en la lista!")
+            print(f"{option} ya esta en la lista!\n")
             continue
         LISTA_COMPRA.append(option)
         print(f"{option} agregado a la lista!\n")
@@ -19,4 +19,4 @@ while option != "Q":
         continue
 
 print(f"\nLa Lista de la compra es: ")
-print(LISTA_COMPRA)
+print(", ".join(LISTA_COMPRA))
