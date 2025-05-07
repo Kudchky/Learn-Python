@@ -16,6 +16,7 @@ while option != "Q":
         LISTA_COMPRA.append(option)
         print(f"{option} agregado a la lista!\n")
     else:
+        print("No se agrego nada a la lista.\n")
         continue
 
 print(f"\nLa Lista de la compra es: ")
