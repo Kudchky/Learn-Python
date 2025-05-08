@@ -3,8 +3,8 @@ option = ""
 
 print("\n============= Programa Lista de la Compra ================\n")
 
-while option != "Q":
-    option= input("¿Que desea comprar? ([Q] para salir) >> ").strip().capitalize()
+while True:
+    option= input("¿Que desea comprar? ([Q] para salir) >> ").strip().upper()
     if  option.upper() == "Q":
         break
 
@@ -19,5 +19,4 @@ while option != "Q":
         print("No se agrego nada a la lista.\n")
         continue
 
-print(f"\nLa Lista de la compra es: ")
-print(", ".join(LISTA_COMPRA))
+print(f"\nLa Lista de la compra es: \n" + ", ".join(LISTA_COMPRA))
