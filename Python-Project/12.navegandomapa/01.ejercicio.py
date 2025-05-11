@@ -26,20 +26,24 @@ while True:
 
     if direction == "w":
         my_position[POS_Y] -= 1
-        if my_position[POS_Y] < 0:
-            my_position[POS_Y] = MAP_HEIGHT - 1
+        my_position[POS_Y] %= MAP_HEIGHT
+        #if my_position[POS_Y] < 0:
+        #    my_position[POS_Y] = MAP_HEIGHT - 1
     elif direction == "s":
         my_position[POS_Y] += 1
-        if my_position[POS_Y] > MAP_HEIGHT - 1:
-            my_position[POS_Y] = 0
+        my_position[POS_Y] %= MAP_HEIGHT
+        #if my_position[POS_Y] > MAP_HEIGHT - 1:
+        #    my_position[POS_Y] = 0
     elif direction == "a":
         my_position[POS_X] -= 1
-        if my_position[POS_X] < 0:
-            my_position[POS_X] = MAP_WIDTH - 1
+        my_position[POS_X] %= MAP_WIDTH
+        #if my_position[POS_X] < 0:
+        #    my_position[POS_X] = MAP_WIDTH - 1
     elif direction == "d":
         my_position[POS_X] += 1
-        if my_position[POS_X] > MAP_WIDTH - 1:
-            my_position[POS_X] = 0
+        my_position[POS_X] %= MAP_WIDTH
+        #if my_position[POS_X] > MAP_WIDTH - 1:
+        #    my_position[POS_X] = 0
     elif direction == "q":
         break
     else:
