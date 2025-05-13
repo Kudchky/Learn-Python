@@ -8,16 +8,28 @@ MAP_WIDTH = 20
 MAP_HEIGHT = 15
 
 my_position = [3, 1]
+map_objects = [[2, 3], [5, 4], [3, 4], [10, 6], [18, 12]]
 
 while True:
     print("+" + "-" * MAP_WIDTH * 3 + "+")
     for coordinate_y in range(MAP_HEIGHT):
         print("|", end="")
         for coordinate_x in range(MAP_WIDTH):
+            drawn = False
+
             if coordinate_x == my_position[POS_X] and coordinate_y == my_position[POS_Y]:
                 print(" @ ", end="")
-            else:
+                drawn = True
+
+            for obj in map_objects:
+                if coordinate_x == obj[POS_X] and coordinate_y == obj[POS_Y]:
+                    print(" # ", end="")
+                    drawn = True
+                    break
+
+            if not drawn:
                 print("   ", end="")
+
         print("|")
     print("+" + "-" * MAP_WIDTH * 3 + "+")
 
@@ -48,7 +60,7 @@ while True:
         break
     else:
         print("Enter a valid value: [W, S, A, D]")
-        time.sleep(2);
+        time.sleep(2)
 
     os.system("clear")
 
