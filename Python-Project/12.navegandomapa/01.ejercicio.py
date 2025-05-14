@@ -14,19 +14,27 @@ while True:
     print("+" + "-" * MAP_WIDTH * 3 + "+")
     for coordinate_y in range(MAP_HEIGHT):
         print("|", end="")
+
         for coordinate_x in range(MAP_WIDTH):
             drawn = False
-
+            #Drawn the player
             if coordinate_x == my_position[POS_X] and coordinate_y == my_position[POS_Y]:
                 print(" @ ", end="")
                 drawn = True
+            #Drawn objects if the player is not
+            if drawn:
+                for obj in map_objects:
+                    if (coordinate_x == obj[POS_X] and coordinate_y == obj[POS_Y]) and (coordinate_x == my_position[POS_X] and coordinate_y == my_position[POS_Y]):
+                        map_objects.remove(obj)
+                        break
+            elif not drawn:
+                for obj in map_objects:
+                    if coordinate_x == obj[POS_X] and coordinate_y == obj[POS_Y]:
+                        print(" # ", end="")
+                        drawn = True
+                        break
 
-            for obj in map_objects:
-                if coordinate_x == obj[POS_X] and coordinate_y == obj[POS_Y]:
-                    print(" # ", end="")
-                    drawn = True
-                    break
-
+            #if you did not draw the player or the object, empty space.
             if not drawn:
                 print("   ", end="")
 
