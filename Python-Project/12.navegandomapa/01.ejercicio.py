@@ -1,43 +1,41 @@
 import os
 import time
 import readchar
+import random
 
 POS_X = 0
 POS_Y = 1
 MAP_WIDTH = 20
 MAP_HEIGHT = 15
+NUM_OBJECTS = 10
 
 my_position = [3, 1]
-map_objects = [[2, 3], [5, 4], [3, 4], [10, 6], [18, 12]]
+map_objects = []
+for element in range(NUM_OBJECTS):
+    x = random.randint(0, MAP_WIDTH - 1)
+    y = random.randint(0, MAP_HEIGHT - 1)
+
+    if [x, y] not in map_objects:
+        map_objects.append([x, y])
 
 while True:
     print("+" + "-" * MAP_WIDTH * 3 + "+")
-    for coordinate_y in range(MAP_HEIGHT):
+    for y in range(MAP_HEIGHT):
         print("|", end="")
 
-        for coordinate_x in range(MAP_WIDTH):
-            drawn = False
-            #Drawn the player
-            if coordinate_x == my_position[POS_X] and coordinate_y == my_position[POS_Y]:
+        for x in range(MAP_WIDTH):
+            # Player in the position
+            if [x, y] == my_position:
                 print(" @ ", end="")
-                drawn = True
-            #Drawn objects if the player is not
-            if drawn:
-                for obj in map_objects:
-                    if (coordinate_x == obj[POS_X] and coordinate_y == obj[POS_Y]) and (coordinate_x == my_position[POS_X] and coordinate_y == my_position[POS_Y]):
-                        map_objects.remove(obj)
-                        break
-            elif not drawn:
-                for obj in map_objects:
-                    if coordinate_x == obj[POS_X] and coordinate_y == obj[POS_Y]:
-                        print(" # ", end="")
-                        drawn = True
-                        break
-
-            #if you did not draw the player or the object, empty space.
-            if not drawn:
+                # If there is an object in the position of the player
+                if [x, y] in map_objects:
+                    map_objects.remove([x, y])
+            # If only is an object
+            elif [x, y] in map_objects:
+                print(" # ", end="")
+            # Empty space
+            else:
                 print("   ", end="")
-
         print("|")
     print("+" + "-" * MAP_WIDTH * 3 + "+")
 
