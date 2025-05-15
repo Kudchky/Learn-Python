@@ -11,11 +11,12 @@ NUM_OBJECTS = 10
 
 my_position = [3, 1]
 map_objects = []
-for element in range(NUM_OBJECTS):
+
+while len(map_objects) < NUM_OBJECTS:
     x = random.randint(0, MAP_WIDTH - 1)
     y = random.randint(0, MAP_HEIGHT - 1)
 
-    if [x, y] not in map_objects:
+    if [x, y] not in map_objects and [x, y] != my_position:
         map_objects.append([x, y])
 
 while True:
@@ -32,7 +33,7 @@ while True:
                     map_objects.remove([x, y])
             # If only is an object
             elif [x, y] in map_objects:
-                print(" # ", end="")
+                print(" * ", end="")
             # Empty space
             else:
                 print("   ", end="")
