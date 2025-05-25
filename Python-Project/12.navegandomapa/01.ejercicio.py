@@ -73,6 +73,7 @@ while True:
         if len(tail) > tail_length:
             tail = tail[:tail_length]
         if my_position in tail:
+            time.sleep(1)
             os.system("clear")
             centered_message("💀 GAME OVER 💀")
             time.sleep(2)
@@ -84,6 +85,7 @@ while True:
         if len(tail) > tail_length:
             tail = tail[:tail_length]
         if my_position in tail:
+            time.sleep(1)
             os.system("clear")
             centered_message("💀 GAME OVER 💀")
             time.sleep(2)
@@ -95,6 +97,7 @@ while True:
         if len(tail) > tail_length:
             tail = tail[:tail_length]
         if my_position in tail:
+            time.sleep(1)
             os.system("clear")
             centered_message("💀 GAME OVER 💀")
             time.sleep(2)
@@ -106,6 +109,7 @@ while True:
         if len(tail) > tail_length:
             tail = tail[:tail_length]
         if my_position in tail:
+            time.sleep(1)
             os.system("clear")
             centered_message("💀 GAME OVER 💀")
             time.sleep(2)
@@ -115,7 +119,7 @@ while True:
         break
     else:
         print("Enter a valid value: [W, S, A, D]")
-        time.sleep(2)
+        time.sleep(1)
 
     os.system("clear")
 
