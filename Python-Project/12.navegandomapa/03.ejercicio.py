@@ -12,6 +12,7 @@ LIST_FOOD = []
 TRACE_SNAKE = []
 TAIL_SNAKE = []
 count_food = 0
+game_over = True
 
 #Funtions----
 def add_food():
@@ -26,38 +27,29 @@ def add_food():
 
 def move_snake(position):
     global TAIL_SNAKE
+    # Define trace snake
+    TRACE_SNAKE.insert(0, position)
+    # Define tail snake
+    if count_food > 0:
+        TAIL_SNAKE = TRACE_SNAKE[: count_food]
     print("Press a key (w, s, a, d) or q to exit...!")
     key = readchar.readchar().upper()
     match key:
         case "W":
-            # Define trace snake
-            TRACE_SNAKE.insert(0, position)
-            # Define tail snake
-            if count_food > 0:
-                TAIL_SNAKE = TRACE_SNAKE[: count_food]
             # Define position new
             position = [position[0], position[1] - 1]
             # Define that snake appears to the other side
             if position[1] == -1:
                 position = [position[0], HEIGHT - 1]
         case "S":
-            TRACE_SNAKE.insert(0, position)
-            if count_food > 0:
-                TAIL_SNAKE = TRACE_SNAKE[: count_food]
             position = [position[0], position[1] + 1]
             if position[1] == HEIGHT:
                 position = [position[0], 0]
         case "A":
-            TRACE_SNAKE.insert(0, position)
-            if count_food > 0:
-                TAIL_SNAKE = TRACE_SNAKE[: count_food]
             position = [position[0] - 1, position[1]]
             if position[0] == -1:
                 position = [WIDTH - 1, position[1]]
         case "D":
-            TRACE_SNAKE.insert(0, position)
-            if count_food > 0:
-                TAIL_SNAKE = TRACE_SNAKE[: count_food]
             position = [position[0] + 1, position[1]]
             if position[0] == WIDTH:
                 position = [0, position[1]]
@@ -72,7 +64,7 @@ def move_snake(position):
 
 add_food()
 
-while True:
+while game_over:
     print("\n\n                      Welcome To Snake Game")
     print("+" + "-" * WIDTH * 3 + "+")
     flag = True
@@ -86,6 +78,8 @@ while True:
                         LIST_FOOD.remove([x, y])
                         count_food += 1
                         add_food()
+                    elif [x, y] in TAIL_SNAKE:
+                        game_over = False
                 elif [x, y] in TAIL_SNAKE:
                     print(" o ", end="")
                 elif [x, y] in LIST_FOOD:
@@ -101,6 +95,9 @@ while True:
     #Press a Key
     my_position = move_snake(my_position)
     if my_position == "exit":
+        break
+    if not game_over:
+        print("GAME OVER")
         break
 
     os.system("clear")

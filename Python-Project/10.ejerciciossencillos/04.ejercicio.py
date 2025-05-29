@@ -1,4 +1,4 @@
-print("\nBienvenido a App Tabla de Multiplicar"
+print("\nBienvenido a App Tabla de Multiplicar\n"
       "--------------------------------------\n")
 while True:
     try:
