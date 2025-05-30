@@ -4,7 +4,7 @@ import random
 import time
 import readchar
 
-my_position = [5, 3]
+my_position = [3, 3]
 WIDTH = 20
 HEIGHT = 15
 MAX_FOOD = 10
@@ -12,7 +12,33 @@ LIST_FOOD = []
 TRACE_SNAKE = []
 TAIL_SNAKE = []
 count_food = 0
-game_over = True
+game_over = False
+obstacle_position = []
+score = 0
+
+obstacle_definition = """\
+    ##      ###   ##  
+##  ##      ###   ##
+            
+             ##
+ ##          ##     
+###  ###  ###    ###
+     
+      ###
+      #          ###
+##    # ## ###   ###
+        ###     
+        ### ##   ###
+###              ###
+##  ###      ###    
+             ###    \
+"""
+
+obstacle_definition = [list(el.ljust(WIDTH)) for el in obstacle_definition.split("\n")]
+for row in range(HEIGHT):
+    for column in range(WIDTH):
+        if  obstacle_definition[row][column] == "#":
+            obstacle_position.append([column, row])
 
 #Funtions----
 def add_food():
@@ -21,7 +47,8 @@ def add_food():
         food_y = random.randint(0, HEIGHT - 1)
         if ([food_x, food_y] != my_position and
             [food_x, food_y] not in LIST_FOOD and
-            [food_x, food_y] not in TAIL_SNAKE
+            [food_x, food_y] not in TAIL_SNAKE and
+            [food_x, food_y] not in obstacle_position
         ):
             LIST_FOOD.append([food_x, food_y])
 
@@ -60,12 +87,12 @@ def move_snake(position):
             time.sleep(0.9)
 
     return position
-#Fin----
 
+#Fin----
 add_food()
 
-while game_over:
-    print("\n\n                      Welcome To Snake Game")
+while not game_over:
+    print(f"\n\n                      Welcome To Snake Game         Score: {score}")
     print("+" + "-" * WIDTH * 3 + "+")
     flag = True
     while flag:
@@ -78,12 +105,15 @@ while game_over:
                         LIST_FOOD.remove([x, y])
                         count_food += 1
                         add_food()
-                    elif [x, y] in TAIL_SNAKE:
-                        game_over = False
-                elif [x, y] in TAIL_SNAKE:
-                    print(" o ", end="")
+                        score += 10
+                    elif [x, y] in TAIL_SNAKE or [x, y] in obstacle_position:
+                        game_over = True
                 elif [x, y] in LIST_FOOD:
                     print(" ■ ", end="")
+                elif [x, y] in obstacle_position:
+                    print("███", end="")
+                elif [x, y] in TAIL_SNAKE:
+                    print(" o ", end="")
                 else:
                     print(" . ", end="")
             print("|")
@@ -96,7 +126,7 @@ while game_over:
     my_position = move_snake(my_position)
     if my_position == "exit":
         break
-    if not game_over:
+    if game_over:
         print("GAME OVER")
         break
 
