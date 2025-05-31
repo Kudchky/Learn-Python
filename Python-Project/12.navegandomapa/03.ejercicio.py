@@ -100,14 +100,17 @@ while not game_over:
             print("|", end="")
             for x in range(WIDTH):
                 if [x, y] == my_position:
-                    print(" @ ", end="")
                     if [x, y] in LIST_FOOD:
                         LIST_FOOD.remove([x, y])
                         count_food += 1
                         add_food()
                         score += 10
+                        print(" @ ", end="")
                     elif [x, y] in TAIL_SNAKE or [x, y] in obstacle_position:
+                        print(" ☠ ", end="")
                         game_over = True
+                    else:
+                        print(" @ ", end="")
                 elif [x, y] in LIST_FOOD:
                     print(" ■ ", end="")
                 elif [x, y] in obstacle_position:
@@ -127,7 +130,8 @@ while not game_over:
     if my_position == "exit":
         break
     if game_over:
-        print("GAME OVER")
+        print("\n😵 GAME OVER 😵")
+        print(f"Your final score was: {score}")
         break
 
     os.system("clear")
