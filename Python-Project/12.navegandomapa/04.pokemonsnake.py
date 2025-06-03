@@ -108,7 +108,7 @@ def init_battle():
         print(f"{pokemon:<12} [{cadena}] {result * 10:5.1f}%")
 
     print("\nPokemon battle begins, good luck...........\n"
-          "===================================================\n")
+          "=============================================\n")
     barra_vida(vida_maquina, vida_inicial_maquina, pokemon_maquina)
     barra_vida(vida_user, vida_inicial_usuario, pokemon_user)
 
@@ -193,7 +193,8 @@ for row in range(HEIGHT):
 
 while not game_over:
     flag = True
-    print("      Welcome Game Pokemon Snake  ")
+    print("\nWelcome Game Pokemon Snake")
+    print("--------------------------\n")
     print("Warning:Do not approach the gym walls, you will lose the battle.")
     # Print Map
     while flag:
@@ -225,18 +226,19 @@ while not game_over:
     # End Print Map
     if not master:
         time.sleep(2)
-        print("You earned Pokemon Snake, congratulations you are the best of all")
+        print("\nYou earned Pokemon Snake, congratulations you are the best of all")
         break
 
     if game_over:
-        print("You crashed with the gym wall, they are a trap")
+        print("\nYou crashed with the gym wall, they are a trap")
         print(" GAME OVER ")
         break
 
     if battle_pokemon:
         time.sleep(1)
         os.system("clear")
-        print("Welcome Battle Pokemon")
+        print("\nWelcome Battle Pokemon")
+        print("-----------------------")
         if init_battle():
             master.remove(user_pokemon)
             reiniciar = True
