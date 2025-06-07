@@ -1,0 +1,26 @@
+
+Crea la lista de la compra por tu propia cuenta, ahora añadiremos
+algunos extras...
+
+Ejercicio 1: Externalizar guardado
+
+Mueve el código de guardar el archivo a una función externa
+
+
+
+Ejercicio 2: Lista de productos fija
+
+De ahora en adelante el usuario solo podrá introducir los productos que estén en una lista especifica.
+Por ejemplo si nuestra lista tiene "Pan", "Pollo" y "Pipas", el usuario solo podrá meter en la lista de
+la compra uno de esos 3 items.
+
+Lo haremos comprobando que el texto introducido por el usuario está en la lista de productos
+preestablecidos. Si no lo está le daremos un mensaje avisándole que ese producto no está disponible
+para meter en la lista.
+
+
+
+Ejercicio 3: Mostrar la lista
+
+Implementa el comando "LISTA" para ver los items disponibles que se pueden añadir a la lista, así el
+usuario sabe que puede meter en su lista de la compra y que no.
